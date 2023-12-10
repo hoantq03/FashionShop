@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d5bb72fa33a441dab1927832de6ea53" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopModel.address" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.cart_details" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.cart" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.discount_used_detail" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.discount" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.inventory" Width="1.5" PointX="7.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.order_details" Width="1.5" PointX="9.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.order" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.product" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.shipper" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.user" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="ShopModel.FK_addresses_users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_orders_addresses" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_cart_details_carts" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_cart_details_products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_users_carts" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_discount_used_detail_discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_discount_used_detail_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_discount_used_detail_users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_discounts_users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_orders_discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_inventories_products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_inventories_users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_order_details_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_order_details_products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_orders_shippers" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_orders_users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_products_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
