@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address_line" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="district" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ward" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="postal_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_addresses_users" FromRole="addresses" ToRole="users" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_addresses" FromRole="addresses" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="cart_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cart_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="product_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="cart" Relationship="Self.FK_cart_details_carts" FromRole="cart_details" ToRole="carts" />
+    <NavigationProperty Name="product" Relationship="Self.FK_cart_details_products" FromRole="cart_details" ToRole="products" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="cart_details" Relationship="Self.FK_cart_details_carts" FromRole="carts" ToRole="cart_details" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_carts" FromRole="carts" ToRole="users" />
+  </EntityType>
+  <EntityType Name="discount_used_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="discount_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="used_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="discount" Relationship="Self.FK_discount_used_detail_discounts" FromRole="discount_used_detail" ToRole="discounts" />
+    <NavigationProperty Name="order" Relationship="Self.FK_discount_used_detail_orders" FromRole="discount_used_detail" ToRole="orders" />
+    <NavigationProperty Name="user" Relationship="Self.FK_discount_used_detail_users" FromRole="discount_used_detail" ToRole="users" />
+  </EntityType>
+  <EntityType Name="discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="value" Type="Int32" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="number_of_use" Type="Int32" Nullable="false" />
+    <Property Name="min_order_value" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="discount_used_detail" Relationship="Self.FK_discount_used_detail_discounts" FromRole="discounts" ToRole="discount_used_detail" />
+    <NavigationProperty Name="user" Relationship="Self.FK_discounts_users" FromRole="discounts" ToRole="users" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_discounts" FromRole="discounts" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="inventory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="product_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK_inventories_products" FromRole="inventories" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.FK_inventories_users" FromRole="inventories" ToRole="users" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="order_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="product_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_details_orders" FromRole="order_details" ToRole="orders" />
+    <NavigationProperty Name="product" Relationship="Self.FK_order_details_products" FromRole="order_details" ToRole="products" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="bill_date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ship_cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="shipper_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="discount_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="address" Relationship="Self.FK_orders_addresses" FromRole="orders" ToRole="addresses" />
+    <NavigationProperty Name="discount_used_detail" Relationship="Self.FK_discount_used_detail_orders" FromRole="orders" ToRole="discount_used_detail" />
+    <NavigationProperty Name="discount" Relationship="Self.FK_orders_discounts" FromRole="orders" ToRole="discounts" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK_order_details_orders" FromRole="orders" ToRole="order_details" />
+    <NavigationProperty Name="shipper" Relationship="Self.FK_orders_shippers" FromRole="orders" ToRole="shippers" />
+    <NavigationProperty Name="user" Relationship="Self.FK_orders_users" FromRole="orders" ToRole="users" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="cart_details" Relationship="Self.FK_cart_details_products" FromRole="products" ToRole="cart_details" />
+    <NavigationProperty Name="inventories" Relationship="Self.FK_inventories_products" FromRole="products" ToRole="inventories" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK_order_details_products" FromRole="products" ToRole="order_details" />
+    <NavigationProperty Name="user" Relationship="Self.FK_products_users" FromRole="products" ToRole="users" />
+  </EntityType>
+  <EntityType Name="shipper">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_shippers" FromRole="shippers" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="status" Type="Int16" />
+    <Property Name="cart_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="created_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="updated_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="addresses" Relationship="Self.FK_addresses_users" FromRole="users" ToRole="addresses" />
+    <NavigationProperty Name="cart" Relationship="Self.FK_users_carts" FromRole="users" ToRole="carts" />
+    <NavigationProperty Name="discount_used_detail" Relationship="Self.FK_discount_used_detail_users" FromRole="users" ToRole="discount_used_detail" />
+    <NavigationProperty Name="discounts" Relationship="Self.FK_discounts_users" FromRole="users" ToRole="discounts" />
+    <NavigationProperty Name="inventories" Relationship="Self.FK_inventories_users" FromRole="users" ToRole="inventories" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_users" FromRole="users" ToRole="orders" />
+    <NavigationProperty Name="products" Relationship="Self.FK_products_users" FromRole="users" ToRole="products" />
+  </EntityType>
+  <Association Name="FK_addresses_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="addresses" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="addresses">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_addresses">
+    <End Role="addresses" Type="Self.address" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="addresses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="address_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_details_carts">
+    <End Role="carts" Type="Self.cart" Multiplicity="1" />
+    <End Role="cart_details" Type="Self.cart_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_details">
+        <PropertyRef Name="cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_details_products">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="cart_details" Type="Self.cart_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_details">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_carts">
+    <End Role="carts" Type="Self.cart" Multiplicity="1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discount_used_detail_discounts">
+    <End Role="discounts" Type="Self.discount" Multiplicity="1" />
+    <End Role="discount_used_detail" Type="Self.discount_used_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="discounts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount_used_detail">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discount_used_detail_orders">
+    <End Role="orders" Type="Self.order" Multiplicity="1" />
+    <End Role="discount_used_detail" Type="Self.discount_used_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount_used_detail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discount_used_detail_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="discount_used_detail" Type="Self.discount_used_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount_used_detail">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discounts_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="discounts" Type="Self.discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discounts">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_discounts">
+    <End Role="discounts" Type="Self.discount" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="discounts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventories_products">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="inventories" Type="Self.inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventories">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventories_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="inventories" Type="Self.inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventories">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_details_orders">
+    <End Role="orders" Type="Self.order" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_details_products">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_shippers">
+    <End Role="shippers" Type="Self.shipper" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shippers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="shipper_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_users">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopEntities6" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="addresses" EntityType="Self.address" />
+    <EntitySet Name="cart_details" EntityType="Self.cart_details" />
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="discount_used_detail" EntityType="Self.discount_used_detail" />
+    <EntitySet Name="discounts" EntityType="Self.discount" />
+    <EntitySet Name="inventories" EntityType="Self.inventory" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="shippers" EntityType="Self.shipper" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_addresses_users" Association="Self.FK_addresses_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="addresses" EntitySet="addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_addresses" Association="Self.FK_orders_addresses">
+      <End Role="addresses" EntitySet="addresses" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_details_carts" Association="Self.FK_cart_details_carts">
+      <End Role="carts" EntitySet="carts" />
+      <End Role="cart_details" EntitySet="cart_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_details_products" Association="Self.FK_cart_details_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="cart_details" EntitySet="cart_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_carts" Association="Self.FK_users_carts">
+      <End Role="carts" EntitySet="carts" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discount_used_detail_discounts" Association="Self.FK_discount_used_detail_discounts">
+      <End Role="discounts" EntitySet="discounts" />
+      <End Role="discount_used_detail" EntitySet="discount_used_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discount_used_detail_orders" Association="Self.FK_discount_used_detail_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="discount_used_detail" EntitySet="discount_used_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discount_used_detail_users" Association="Self.FK_discount_used_detail_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="discount_used_detail" EntitySet="discount_used_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discounts_users" Association="Self.FK_discounts_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="discounts" EntitySet="discounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_discounts" Association="Self.FK_orders_discounts">
+      <End Role="discounts" EntitySet="discounts" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventories_products" Association="Self.FK_inventories_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="inventories" EntitySet="inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventories_users" Association="Self.FK_inventories_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="inventories" EntitySet="inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_details_orders" Association="Self.FK_order_details_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_details_products" Association="Self.FK_order_details_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_shippers" Association="Self.FK_orders_shippers">
+      <End Role="shippers" EntitySet="shippers" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_users" Association="Self.FK_products_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

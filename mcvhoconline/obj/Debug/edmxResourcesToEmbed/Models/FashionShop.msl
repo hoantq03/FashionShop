@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FashionShopStoreContainer" CdmEntityContainer="ShopEntities7">
+    <EntitySetMapping Name="addresses">
+      <EntityTypeMapping TypeName="FashionShop.address">
+        <MappingFragment StoreEntitySet="addresses">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address_line" ColumnName="address_line" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="ward" ColumnName="ward" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cart_details">
+      <EntityTypeMapping TypeName="FashionShop.cart_details">
+        <MappingFragment StoreEntitySet="cart_details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="FashionShop.cart">
+        <MappingFragment StoreEntitySet="carts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="discount_used_detail">
+      <EntityTypeMapping TypeName="FashionShop.discount_used_detail">
+        <MappingFragment StoreEntitySet="discount_used_detail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="discount_id" ColumnName="discount_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="used_date" ColumnName="used_date" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="discounts">
+      <EntityTypeMapping TypeName="FashionShop.discount">
+        <MappingFragment StoreEntitySet="discounts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="number_of_use" ColumnName="number_of_use" />
+          <ScalarProperty Name="min_order_value" ColumnName="min_order_value" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="FashionShop.inventory">
+        <MappingFragment StoreEntitySet="inventories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="FashionShop.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="FashionShop.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="bill_date" ColumnName="bill_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="ship_cost" ColumnName="ship_cost" />
+          <ScalarProperty Name="shipper_id" ColumnName="shipper_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="discount_id" ColumnName="discount_id" />
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="FashionShop.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippers">
+      <EntityTypeMapping TypeName="FashionShop.shipper">
+        <MappingFragment StoreEntitySet="shippers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FashionShop.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="FashionShop.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
