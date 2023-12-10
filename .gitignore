@@ -6,3 +6,6 @@ packages
 ./mvchoconline/bin
 ./mvchoconline/Content
 ./mvchoconline/fonts
+./mvchoconline/obj
+./mvchoconline/Properties
+./mvchoconline/Scripts
